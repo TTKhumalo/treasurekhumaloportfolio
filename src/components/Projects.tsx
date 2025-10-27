@@ -10,6 +10,7 @@ const Projects = () => {
       description: "AI-powered platform designed to streamline the graduate job application process. Features intelligent matching algorithms and automated application tracking.",
       tags: ["React", "Google AI Studio", "Python", "Google Colab"],
       githubUrl: "https://github.com/TTKhumalo",
+      liveUrl: "https://grad-job-application.vercel.app/",
       featured: true
     },
     {
@@ -17,6 +18,7 @@ const Projects = () => {
       description: "Comprehensive educational application integrating AI capabilities for personalized learning experiences and administrative efficiency.",
       tags: ["React", "AI/ML", "Database Management", "Google Colab"],
       githubUrl: "https://github.com/TTKhumalo",
+      liveUrl: "https://logic-league.vercel.app/",
       featured: true
     },
     {
@@ -24,6 +26,7 @@ const Projects = () => {
       description: "Intelligent resume creation tool utilizing AI to generate professional, ATS-optimized resumes tailored to specific job requirements.",
       tags: ["React", "Google AI Studio", "NLP", "TypeScript"],
       githubUrl: "https://github.com/TTKhumalo",
+      liveUrl: "https://logic-league-one.vercel.app/",
       featured: true
     },
     {
@@ -31,6 +34,7 @@ const Projects = () => {
       description: "Advanced sentiment analyzer leveraging machine learning to process and interpret emotional content from text data.",
       tags: ["Python", "Machine Learning", "React", "Google Colab"],
       githubUrl: "https://github.com/TTKhumalo",
+      liveUrl: "https://logic-league.github.io/Logic-League-Sentiment-Analyzer/",
       featured: false
     }
   ];
@@ -104,13 +108,13 @@ const Projects = () => {
                     asChild
                   >
                     <a
-                      href={project.githubUrl}
+                      href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2"
                     >
                       <ExternalLink className="w-4 h-4" />
-                      Learn More
+                      Live Demo
                     </a>
                   </Button>
                 </div>
