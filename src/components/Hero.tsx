@@ -23,7 +23,7 @@ const Hero = () => {
             <img
               src={profilePhoto}
               alt="Treasure Khumalo"
-              className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full object-cover border-4 border-primary/50 shadow-glow"
+              className="relative w-[260px] h-[260px] lg:w-[350px] lg:h-[350px] rounded-full object-cover border-4 border-primary/50 shadow-glow"
             />
           </div>
 
