@@ -54,6 +54,8 @@ export default {
       },
       boxShadow: {
         'glow': 'var(--shadow-glow)',
+        'vintage': 'var(--shadow-vintage)',
+        'frame': 'var(--shadow-frame)',
       },
       transitionProperty: {
         'smooth': 'var(--transition-smooth)',
