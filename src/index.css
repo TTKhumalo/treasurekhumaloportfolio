@@ -8,42 +8,45 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Vintage color palette - warm sepia tones */
-    --background: 35 25% 92%;
-    --foreground: 30 20% 25%;
+    /* Khaki background with white text color palette */
+    --background: 54 40% 70%;
+    --foreground: 0 0% 100%;
 
-    --card: 40 30% 96%;
-    --card-foreground: 30 20% 25%;
+    --card: 54 35% 65%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 40 30% 96%;
-    --popover-foreground: 30 20% 25%;
+    --popover: 54 35% 65%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 35 45% 45%;
-    --primary-foreground: 40 30% 96%;
+    --primary: 25 60% 35%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 30 40% 60%;
-    --secondary-foreground: 30 20% 25%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 35 20% 80%;
-    --muted-foreground: 30 15% 45%;
+    --muted: 54 30% 50%;
+    --muted-foreground: 0 0% 90%;
 
     --accent: 25 55% 55%;
-    --accent-foreground: 40 30% 96%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 60% 50%;
-    --destructive-foreground: 40 30% 96%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 30 25% 70%;
-    --input: 30 25% 70%;
-    --ring: 35 45% 45%;
+    --border: 0 0% 100%;
+    --input: 0 0% 100%;
+    --ring: 25 60% 35%;
 
     --radius: 0.25rem;
 
-    /* Vintage design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(35 45% 55%), hsl(30 40% 65%));
-    --gradient-card: linear-gradient(180deg, hsl(40 30% 96%), hsl(35 25% 92%));
-    --shadow-vintage: 0 8px 16px hsl(30 20% 25% / 0.15), inset 0 0 60px hsl(35 45% 45% / 0.05);
-    --shadow-frame: inset 0 0 0 8px hsl(35 45% 45%), inset 0 0 0 12px hsl(40 30% 85%);
+    /* Maroon navigation */
+    --nav-background: 0 60% 30%;
+
+    /* Design tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(25 60% 35%), hsl(25 60% 45%));
+    --gradient-card: linear-gradient(180deg, hsl(54 35% 65%), hsl(54 40% 70%));
+    --shadow-vintage: 0 8px 16px hsl(0 0% 0% / 0.15), inset 0 0 60px hsl(25 60% 35% / 0.05);
+    --shadow-frame: inset 0 0 0 8px hsl(25 60% 35%), inset 0 0 0 12px hsl(54 35% 65%);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }

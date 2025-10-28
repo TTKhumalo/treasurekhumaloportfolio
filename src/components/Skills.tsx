@@ -1,75 +1,66 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Code2, Database, Network, Palette } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const Skills = () => {
-  const skillCategories = [
-    {
-      title: "Programming & Scripting",
-      icon: Code2,
-      color: "text-primary",
-      skills: ["Python", "JavaScript", "TypeScript", "React", "HTML/CSS", "Node.js"]
-    },
-    {
-      title: "Database Management",
-      icon: Database,
-      color: "text-secondary",
-      skills: ["SQL", "Database Design", "Data Modeling", "Query Optimization"]
-    },
-    {
-      title: "System Administration",
-      icon: Network,
-      color: "text-primary",
-      skills: ["Networking", "System Configuration", "Technical Support", "Troubleshooting"]
-    },
-    {
-      title: "Multimedia & Design",
-      icon: Palette,
-      color: "text-secondary",
-      skills: ["Digital Editing", "UI/UX Design", "Multimedia Production", "Content Creation"]
-    }
+  const skillsWithPercentages = [
+    { name: "Sound Editing", percentage: 75, color: "hsl(25 60% 35%)" },
+    { name: "Photoshop", percentage: 72, color: "hsl(25 60% 40%)" },
+    { name: "Video Editing", percentage: 73, color: "hsl(25 60% 35%)" },
+    { name: "Programming", percentage: 79, color: "hsl(25 60% 40%)" },
+    { name: "Web Design", percentage: 85, color: "hsl(25 60% 35%)" },
   ];
+
+  const [animatedPercentages, setAnimatedPercentages] = useState(
+    skillsWithPercentages.map(() => 0)
+  );
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimatedPercentages(skillsWithPercentages.map(skill => skill.percentage));
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <section id="skills" className="py-20 bg-card/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 space-y-4">
-          <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+          <h2 className="text-4xl lg:text-5xl font-bold text-foreground">
             Technical Skills
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Comprehensive skill set spanning development, systems, and design
+          <p className="text-foreground/80 text-lg max-w-2xl mx-auto">
+            Comprehensive skill set with measurable proficiency levels
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {skillCategories.map((category, index) => {
-            const Icon = category.icon;
-            return (
-              <Card
-                key={index}
-                className="p-6 bg-gradient-card border-primary/20 hover:border-primary/50 transition-all duration-300 hover:shadow-glow group"
-              >
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="p-3 rounded-lg bg-primary/20 group-hover:bg-primary/30 transition-colors">
-                    <Icon className={`w-6 h-6 ${category.color}`} />
+        {/* Animated Skill Graphs */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <Card className="p-8 bg-gradient-card border-2 border-foreground/20">
+            <h3 className="text-2xl font-semibold mb-8 text-center text-foreground">Skill Proficiency</h3>
+            <div className="space-y-6">
+              {skillsWithPercentages.map((skill, index) => (
+                <div key={index} className="space-y-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-lg font-medium text-foreground">{skill.name}</span>
+                    <span className="text-lg font-bold text-foreground">{animatedPercentages[index]}%</span>
                   </div>
-                  <h3 className="text-xl font-semibold pt-2">{category.title}</h3>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill, skillIndex) => (
-                    <Badge
-                      key={skillIndex}
-                      variant="secondary"
-                      className="bg-muted hover:bg-primary/20 transition-colors"
+                  <div className="h-6 bg-background/50 rounded-full overflow-hidden border-2 border-foreground/30">
+                    <div
+                      className="h-full bg-primary transition-all duration-1000 ease-out flex items-center justify-end pr-2"
+                      style={{ 
+                        width: `${animatedPercentages[index]}%`,
+                        backgroundColor: skill.color
+                      }}
                     >
-                      {skill}
-                    </Badge>
-                  ))}
+                      <div className="w-3 h-3 bg-foreground rounded-full animate-pulse" />
+                    </div>
+                  </div>
                 </div>
-              </Card>
-            );
-          })}
+              ))}
+            </div>
+          </Card>
         </div>
 
         {/* Soft Skills Section */}
