@@ -1,27 +1,18 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { RadialBarChart, RadialBar, Legend, ResponsiveContainer } from "recharts";
 
 const Skills = () => {
-  const skillsWithPercentages = [
-    { name: "Sound Editing", percentage: 75, color: "hsl(25 60% 35%)" },
-    { name: "Photoshop", percentage: 72, color: "hsl(25 60% 40%)" },
-    { name: "Video Editing", percentage: 73, color: "hsl(25 60% 35%)" },
-    { name: "Programming", percentage: 79, color: "hsl(25 60% 40%)" },
-    { name: "Web Design", percentage: 85, color: "hsl(25 60% 35%)" },
+  const [isHovered, setIsHovered] = useState(false);
+
+  const chartData = [
+    { name: "Sound Editing", value: 75, fill: "hsl(25 60% 35%)" },
+    { name: "Photoshop", value: 72, fill: "hsl(30 65% 45%)" },
+    { name: "Video Editing", value: 73, fill: "hsl(35 70% 50%)" },
+    { name: "Programming", value: 79, fill: "hsl(20 55% 40%)" },
+    { name: "Web Design", value: 85, fill: "hsl(25 60% 30%)" },
   ];
-
-  const [animatedPercentages, setAnimatedPercentages] = useState(
-    skillsWithPercentages.map(() => 0)
-  );
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setAnimatedPercentages(skillsWithPercentages.map(skill => skill.percentage));
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <section id="skills" className="py-20 bg-card/30">
@@ -35,30 +26,44 @@ const Skills = () => {
           </p>
         </div>
 
-        {/* Animated Skill Graphs */}
+        {/* Sunburst Chart */}
         <div className="max-w-4xl mx-auto mb-16">
           <Card className="p-8 bg-gradient-card border-2 border-foreground/20">
             <h3 className="text-2xl font-semibold mb-8 text-center text-foreground">Skill Proficiency</h3>
-            <div className="space-y-6">
-              {skillsWithPercentages.map((skill, index) => (
-                <div key={index} className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-lg font-medium text-foreground">{skill.name}</span>
-                    <span className="text-lg font-bold text-foreground">{animatedPercentages[index]}%</span>
-                  </div>
-                  <div className="h-6 bg-background/50 rounded-full overflow-hidden border-2 border-foreground/30">
-                    <div
-                      className="h-full bg-primary transition-all duration-1000 ease-out flex items-center justify-end pr-2"
-                      style={{ 
-                        width: `${animatedPercentages[index]}%`,
-                        backgroundColor: skill.color
-                      }}
-                    >
-                      <div className="w-3 h-3 bg-foreground rounded-full animate-pulse" />
-                    </div>
-                  </div>
-                </div>
-              ))}
+            <div 
+              className="w-full h-[500px] transition-transform duration-700 ease-in-out"
+              style={{ transform: isHovered ? 'rotate(360deg)' : 'rotate(0deg)' }}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              <ResponsiveContainer width="100%" height="100%">
+                <RadialBarChart
+                  cx="50%"
+                  cy="50%"
+                  innerRadius="20%"
+                  outerRadius="90%"
+                  data={chartData}
+                  startAngle={90}
+                  endAngle={450}
+                >
+                  <RadialBar
+                    background
+                    dataKey="value"
+                    cornerRadius={10}
+                  />
+                  <Legend
+                    iconSize={16}
+                    layout="vertical"
+                    verticalAlign="middle"
+                    align="right"
+                    formatter={(value, entry: any) => (
+                      <span className="text-foreground font-medium">
+                        {value} ({entry.payload.value}%)
+                      </span>
+                    )}
+                  />
+                </RadialBarChart>
+              </ResponsiveContainer>
             </div>
           </Card>
         </div>
