@@ -8,12 +8,12 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Khaki background with white text color palette */
+    /* Khaki background with dark text color palette */
     --background: 54 40% 70%;
-    --foreground: 0 0% 100%;
+    --foreground: 25 50% 15%;
 
     --card: 54 35% 65%;
-    --card-foreground: 0 0% 100%;
+    --card-foreground: 25 50% 15%;
 
     --popover: 54 35% 65%;
     --popover-foreground: 0 0% 100%;
