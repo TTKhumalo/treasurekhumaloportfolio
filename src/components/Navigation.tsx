@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,11 +23,15 @@ const Navigation = () => {
   };
 
   const navItems = [
-    { id: "home", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "skills", label: "Skills" },
-    { id: "projects", label: "Projects" },
-    { id: "contact", label: "Contact" },
+    { id: "home", label: "Home", type: "scroll" },
+    { id: "about", label: "About", type: "scroll" },
+    { id: "skills", label: "Skills", type: "scroll" },
+    { id: "projects", label: "Projects", type: "scroll" },
+    { id: "contact", label: "Contact", type: "scroll" },
+  ];
+
+  const pageLinks = [
+    { path: "/certificates", label: "Certificates" }
   ];
 
   return (
@@ -45,7 +51,7 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
+            {location.pathname === "/" && navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
@@ -53,6 +59,15 @@ const Navigation = () => {
               >
                 {item.label}
               </button>
+            ))}
+            {pageLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className="text-white hover:text-white/80 transition-colors font-medium"
+              >
+                {link.label}
+              </Link>
             ))}
           </div>
 
@@ -73,7 +88,7 @@ const Navigation = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-white/20 animate-fade-in">
             <div className="flex flex-col gap-4">
-              {navItems.map((item) => (
+              {location.pathname === "/" && navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
@@ -81,6 +96,16 @@ const Navigation = () => {
                 >
                   {item.label}
                 </button>
+              ))}
+              {pageLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-left px-4 py-2 rounded-lg hover:bg-white/10 transition-colors font-medium text-white"
+                >
+                  {link.label}
+                </Link>
               ))}
             </div>
           </div>
