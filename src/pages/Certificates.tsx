@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
-import { Download } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Download, ArrowLeft } from "lucide-react";
 
 import cert1 from "@/assets/certificates/advanced-learning-algorithms.jpg";
 import cert2 from "@/assets/certificates/ai-essentials.jpg";
@@ -105,6 +107,12 @@ const Certificates = () => {
       <Navigation />
       <main className="container mx-auto px-4 py-24">
         <div className="text-center mb-16 animate-fade-in">
+          <Link to="/">
+            <Button variant="outline" className="mb-6 inline-flex items-center gap-2">
+              <ArrowLeft size={20} />
+              Back to Home
+            </Button>
+          </Link>
           <h1 className="text-5xl font-bold mb-4">AI Certificates</h1>
           <p className="text-xl text-muted-foreground">
             Professional certifications from leading institutions
