@@ -50,12 +50,15 @@ export default {
       },
       backgroundImage: {
         'gradient-primary': 'var(--gradient-primary)',
+        'gradient-secondary': 'var(--gradient-secondary)',
         'gradient-card': 'var(--gradient-card)',
+        'gradient-tech': 'var(--gradient-tech)',
       },
       boxShadow: {
         'glow': 'var(--shadow-glow)',
-        'vintage': 'var(--shadow-vintage)',
-        'frame': 'var(--shadow-frame)',
+        'glow-purple': 'var(--shadow-glow-purple)',
+        'tech': 'var(--shadow-tech)',
+        'card': 'var(--shadow-card)',
       },
       transitionProperty: {
         'smooth': 'var(--transition-smooth)',
