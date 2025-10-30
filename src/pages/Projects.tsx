@@ -132,7 +132,7 @@ const Projects = () => {
             asChild
           >
             <a
-              href="https://github.com/orgs/Logic-League/repositories"
+              href="https://github.com/Logic-League"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2"
