@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -104,8 +103,7 @@ const Certificates = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Navigation />
-      <main className="container mx-auto px-4 py-24">
+      <main className="container mx-auto px-4 py-8">
         <div className="text-center mb-16 animate-fade-in">
           <Link to="/">
             <Button variant="outline" className="mb-6 inline-flex items-center gap-2">
