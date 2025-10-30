@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,20 +15,12 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    setIsMobileMenuOpen(false);
-  };
-
   const navItems = [
-    { id: "home", label: "Home", type: "scroll" },
-    { id: "about", label: "About", type: "scroll" },
-    { id: "skills", label: "Skills", type: "scroll" },
-    { id: "projects", label: "Projects", type: "scroll" },
-    { id: "contact", label: "Contact", type: "scroll" },
-  ];
-
-  const pageLinks = [
+    { path: "/", label: "Home" },
+    { path: "/about", label: "About" },
+    { path: "/skills", label: "Skills" },
+    { path: "/projects", label: "Projects" },
+    { path: "/contact", label: "Contact" },
     { path: "/certificates", label: "Certificates" }
   ];
 
@@ -41,31 +31,22 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <button
-            onClick={() => scrollToSection("home")}
+          <Link
+            to="/"
             className="text-2xl font-bold text-white"
           >
             TK
-          </button>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {location.pathname === "/" && navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
+            {navItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
                 className="text-white hover:text-white/80 transition-colors font-medium"
               >
                 {item.label}
-              </button>
-            ))}
-            {pageLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className="text-white hover:text-white/80 transition-colors font-medium"
-              >
-                {link.label}
               </Link>
             ))}
           </div>
@@ -87,23 +68,14 @@ const Navigation = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-white/20 animate-fade-in">
             <div className="flex flex-col gap-4">
-              {location.pathname === "/" && navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-left px-4 py-2 rounded-lg hover:bg-white/10 transition-colors font-medium text-white"
-                >
-                  {item.label}
-                </button>
-              ))}
-              {pageLinks.map((link) => (
+              {navItems.map((item) => (
                 <Link
-                  key={link.path}
-                  to={link.path}
+                  key={item.path}
+                  to={item.path}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="text-left px-4 py-2 rounded-lg hover:bg-white/10 transition-colors font-medium text-white"
                 >
-                  {link.label}
+                  {item.label}
                 </Link>
               ))}
             </div>

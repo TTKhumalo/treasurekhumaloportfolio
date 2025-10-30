@@ -1,12 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, ChevronDown } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 import profilePhoto from "@/assets/profile-photo.jpg";
 
 const Hero = () => {
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Vintage paper texture background */}
@@ -57,19 +54,19 @@ const Hero = () => {
 
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start animate-fade-in-delayed-more">
               <Button
-                onClick={() => scrollToSection("projects")}
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground border-2 border-foreground/20 shadow-vintage transition-all duration-300 uppercase tracking-wider font-semibold"
+                asChild
               >
-                View My Work
+                <Link to="/projects">View My Work</Link>
               </Button>
               <Button
-                onClick={() => scrollToSection("contact")}
                 variant="outline"
                 size="lg"
                 className="border-2 border-primary hover:bg-primary/20 text-foreground uppercase tracking-wider font-semibold"
+                asChild
               >
-                Get In Touch
+                <Link to="/contact">Get In Touch</Link>
               </Button>
             </div>
 
@@ -101,14 +98,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <button
-        onClick={() => scrollToSection("about")}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce border-2 border-primary p-2 bg-card/50"
-      >
-        <ChevronDown className="w-6 h-6 text-primary" />
-      </button>
     </section>
   );
 };
