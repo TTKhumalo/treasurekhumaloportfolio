@@ -37,6 +37,30 @@ const Projects = () => {
       githubUrl: "https://github.com/orgs/Logic-League/repositories",
       liveUrl: "https://logic-league.github.io/Logic-League-Sentiment-Analyzer/",
       featured: false
+    },
+    {
+      title: "Design Portfolio",
+      description: "Interactive design showcase featuring UI/UX projects and prototypes built with modern design tools.",
+      tags: ["Figma", "UI/UX", "Design Systems", "Prototyping"],
+      githubUrl: "https://github.com/orgs/Logic-League/repositories",
+      liveUrl: "https://crow-flask-51049066.figma.site/",
+      featured: false
+    },
+    {
+      title: "Loan Prediction System",
+      description: "Machine learning classification model for predicting loan approvals using various financial and demographic features.",
+      tags: ["Python", "Machine Learning", "Jupyter", "Classification"],
+      githubUrl: "https://github.com/Logic-League/Loan-Prediction-Using-Classification-Machine-Learning-/blob/main/LoanPrediction_Logic_league%20(1).ipynb",
+      liveUrl: "https://github.com/Logic-League/Loan-Prediction-Using-Classification-Machine-Learning-/blob/main/LoanPrediction_Logic_league%20(1).ipynb",
+      featured: false
+    },
+    {
+      title: "AI Chatbot Assistant",
+      description: "Conversational AI interface powered by natural language processing for automated customer interactions and support.",
+      tags: ["AI", "Chatbot", "NLP", "Automation"],
+      githubUrl: "https://github.com/orgs/Logic-League/repositories",
+      liveUrl: "https://landbot.online/v3/H-3106021-L0BWBVHVKR7Y1AMH/index.html",
+      featured: false
     }
   ];
 
