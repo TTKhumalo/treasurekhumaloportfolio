@@ -10,6 +10,10 @@ import Skills from "./pages/Skills";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import Certificates from "./pages/Certificates";
+import VideosAndPictures from "./pages/VideosAndPictures";
+import Resume from "./pages/Resume";
+import Documentation from "./pages/Documentation";
+import CoverLetter from "./pages/CoverLetter";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +34,10 @@ const App = () => (
               <Route path="/projects" element={<Projects />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/certificates" element={<Certificates />} />
+              <Route path="/videos-and-pictures" element={<VideosAndPictures />} />
+              <Route path="/resume" element={<Resume />} />
+              <Route path="/documentation" element={<Documentation />} />
+              <Route path="/cover-letter" element={<CoverLetter />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

@@ -21,7 +21,11 @@ const Navigation = () => {
     { path: "/skills", label: "Skills" },
     { path: "/projects", label: "Projects" },
     { path: "/contact", label: "Contact" },
-    { path: "/certificates", label: "Certificates" }
+    { path: "/certificates", label: "Certificates" },
+    { path: "/videos-and-pictures", label: "Videos & Pictures" },
+    { path: "/resume", label: "Resume" },
+    { path: "/documentation", label: "Documentation" },
+    { path: "/cover-letter", label: "Cover Letter" }
   ];
 
   return (
