@@ -11,7 +11,7 @@ const Footer = () => {
 
           <div className="flex gap-4">
             <a
-              href="https://github.com/TTKhumalo"
+              href="https://github.com/orgs/Logic-League/repositories"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-lg hover:bg-primary/10 transition-colors"

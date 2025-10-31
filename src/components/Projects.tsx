@@ -9,7 +9,7 @@ const Projects = () => {
       title: "Graduate Job Application System",
       description: "AI-powered platform designed to streamline the graduate job application process. Features intelligent matching algorithms and automated application tracking.",
       tags: ["React", "Google AI Studio", "Python", "Google Colab"],
-      githubUrl: "https://github.com/TTKhumalo",
+      githubUrl: "https://github.com/orgs/Logic-League/repositories",
       liveUrl: "https://grad-job-application.vercel.app/",
       featured: true
     },
@@ -17,7 +17,7 @@ const Projects = () => {
       title: "Education Management Platform",
       description: "Comprehensive educational application integrating AI capabilities for personalized learning experiences and administrative efficiency.",
       tags: ["React", "AI/ML", "Database Management", "Google Colab"],
-      githubUrl: "https://github.com/TTKhumalo",
+      githubUrl: "https://github.com/orgs/Logic-League/repositories",
       liveUrl: "https://logic-league.vercel.app/",
       featured: true
     },
@@ -25,7 +25,7 @@ const Projects = () => {
       title: "AI Resume Builder",
       description: "Intelligent resume creation tool utilizing AI to generate professional, ATS-optimized resumes tailored to specific job requirements.",
       tags: ["React", "Google AI Studio", "NLP", "TypeScript"],
-      githubUrl: "https://github.com/TTKhumalo",
+      githubUrl: "https://github.com/orgs/Logic-League/repositories",
       liveUrl: "https://logic-league-one.vercel.app/",
       featured: true
     },
@@ -33,7 +33,7 @@ const Projects = () => {
       title: "Sentiment Analysis Application",
       description: "Advanced sentiment analyzer leveraging machine learning to process and interpret emotional content from text data.",
       tags: ["Python", "Machine Learning", "React", "Google Colab"],
-      githubUrl: "https://github.com/TTKhumalo",
+      githubUrl: "https://github.com/orgs/Logic-League/repositories",
       liveUrl: "https://logic-league.github.io/Logic-League-Sentiment-Analyzer/",
       featured: false
     }

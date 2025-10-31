@@ -67,7 +67,7 @@ const Contact = () => {
                 </a>
 
                 <a
-                  href="https://github.com/TTKhumalo"
+                  href="https://github.com/orgs/Logic-League/repositories"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-4 rounded-lg bg-muted/50 hover:bg-primary/10 transition-all duration-300 group"
