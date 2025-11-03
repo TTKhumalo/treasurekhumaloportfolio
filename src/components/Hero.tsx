@@ -42,6 +42,9 @@ const Hero = () => {
               <p className="text-primary font-semibold text-lg tracking-[0.2em] uppercase animate-fade-in" style={{ fontVariant: 'small-caps' }}>
                 AI/ML Developer & Systems Specialist
               </p>
+              <p className="text-accent font-semibold text-base tracking-[0.15em] uppercase animate-fade-in" style={{ fontVariant: 'small-caps' }}>
+                CAPACITi Yes Program
+              </p>
               <h1 className="text-5xl lg:text-7xl font-bold text-foreground animate-slide-up leading-tight" style={{ textShadow: '2px 2px 0px hsl(var(--muted))' }}>
                 Treasure Khumalo
               </h1>
