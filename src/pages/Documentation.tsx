@@ -77,6 +77,102 @@ const Documentation = () => {
     window.print();
   };
 
+  const handleDownloadDocumentation = () => {
+    const documentContent = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio Documentation - Treasure Khumalo</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; line-height: 1.6; }
+    h1 { color: #0891b2; border-bottom: 3px solid #0891b2; padding-bottom: 10px; }
+    h2 { color: #0284c7; margin-top: 30px; }
+    h3 { color: #0369a1; }
+    .section { margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-left: 4px solid #0891b2; }
+    ul { margin-left: 20px; }
+    .footer { margin-top: 50px; padding-top: 20px; border-top: 2px solid #0891b2; text-align: center; color: #666; }
+  </style>
+</head>
+<body>
+  <h1>Project Documentation - Portfolio Website</h1>
+  <p><strong>Developer:</strong> Treasure Khumalo<br>
+  <strong>Version:</strong> 1.0.0<br>
+  <strong>Last Updated:</strong> November 2025</p>
+
+  ${sections.map(section => `
+    <div class="section">
+      <h2>${section.title}</h2>
+      <p>${section.content.replace(/\n/g, '<br>')}</p>
+    </div>
+  `).join('')}
+
+  <div class="section">
+    <h2>Technology Details</h2>
+    
+    <h3>Frontend Framework</h3>
+    <p>React 18.3.1 with TypeScript for type-safe development, utilizing modern hooks and functional components for optimal performance and maintainability.</p>
+    
+    <h3>Build Tool & Development</h3>
+    <p>Vite for lightning-fast hot module replacement (HMR) and optimized production builds. React Router DOM for seamless client-side navigation.</p>
+    
+    <h3>Styling & UI Components</h3>
+    <p>Tailwind CSS 3.4+ for utility-first styling with custom design tokens. Shadcn UI component library built on Radix UI primitives for accessible, customizable components. Custom animations using CSS keyframes and Tailwind animations.</p>
+    
+    <h3>Notable Features</h3>
+    <ul>
+      <li>Flip card animations for interactive certificate and document displays</li>
+      <li>Staggered fade-in animations for enhanced user experience</li>
+      <li>Responsive navigation with mobile menu support</li>
+      <li>PDF viewing and downloading capabilities</li>
+      <li>Icon integration using Lucide React</li>
+      <li>Form handling with React Hook Form and Zod validation</li>
+    </ul>
+    
+    <h3>Pages & Routes</h3>
+    <ul>
+      <li><strong>Home (/):</strong> Hero section with professional introduction</li>
+      <li><strong>About (/about):</strong> Education, experience, and career goals</li>
+      <li><strong>Skills (/skills):</strong> Technical skills and competencies</li>
+      <li><strong>Projects (/projects):</strong> Portfolio of AI/ML and web development projects</li>
+      <li><strong>Certificates (/certificates):</strong> AI/ML certification showcase</li>
+      <li><strong>Resume (/resume):</strong> Professional CV display and download</li>
+      <li><strong>Cover Letter (/cover-letter):</strong> Position-specific cover letters</li>
+      <li><strong>Contact (/contact):</strong> Professional contact form</li>
+      <li><strong>Documentation (/documentation):</strong> This comprehensive guide</li>
+    </ul>
+    
+    <h3>Target Audience</h3>
+    <p>Hiring managers, recruiters, potential collaborators, and clients seeking a Full Stack Developer with DevOps and AI/ML expertise. The portfolio demonstrates technical proficiency, project experience, and professional presentation skills.</p>
+    
+    <h3>Future Enhancements</h3>
+    <ul>
+      <li>Blog section for technical articles and tutorials</li>
+      <li>Integration with backend APIs for dynamic content</li>
+      <li>Analytics dashboard for tracking visitor engagement</li>
+      <li>Multilingual support</li>
+      <li>Dark/Light theme toggle</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <p><strong>Tech Stack:</strong> React + TypeScript + Vite + Tailwind CSS</p>
+  </div>
+</body>
+</html>
+    `;
+
+    const blob = new Blob([documentContent], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Portfolio_Documentation_Treasure_Khumalo.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <main className="container mx-auto px-4 py-8">
@@ -91,13 +187,23 @@ const Documentation = () => {
           <p className="text-xl text-muted-foreground mb-6">
             Complete guide to the portfolio website functionality and architecture
           </p>
-          <Button 
-            onClick={handlePrintToPDF}
-            className="inline-flex items-center gap-2 bg-gradient-primary"
-          >
-            <Download size={20} />
-            Print to PDF
-          </Button>
+          <div className="flex gap-4 justify-center flex-wrap">
+            <Button 
+              onClick={handlePrintToPDF}
+              variant="outline"
+              className="inline-flex items-center gap-2"
+            >
+              <FileText size={20} />
+              Print to PDF
+            </Button>
+            <Button 
+              onClick={handleDownloadDocumentation}
+              className="inline-flex items-center gap-2 bg-gradient-primary"
+            >
+              <Download size={20} />
+              Download Documentation
+            </Button>
+          </div>
         </div>
 
         {/* Documentation Cards Grid */}
