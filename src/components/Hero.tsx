@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import profilePhoto from "@/assets/profile-photo.jpg";
 
@@ -96,6 +96,14 @@ const Hero = () => {
                 className="p-3 bg-card hover:bg-primary/20 border-2 border-primary transition-all duration-300"
               >
                 <Mail className="w-6 h-6 text-primary" />
+              </a>
+              <a
+                href="https://wa.me/27764248850"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-card hover:bg-primary/20 border-2 border-primary transition-all duration-300"
+              >
+                <MessageCircle className="w-6 h-6 text-primary" />
               </a>
             </div>
           </div>

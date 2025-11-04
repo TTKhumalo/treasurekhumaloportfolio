@@ -43,7 +43,7 @@ const Projects = () => {
       featured: false
     },
     {
-      title: "Design Portfolio",
+      title: "AI Predictive Maintenance System",
       description: "Interactive design showcase featuring UI/UX projects and prototypes built with modern design tools.",
       tags: ["Figma", "UI/UX", "Design Systems", "Prototyping"],
       githubUrl: "https://github.com/orgs/Logic-League/repositories",
