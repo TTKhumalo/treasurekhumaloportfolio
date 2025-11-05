@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Download, ArrowLeft, FileText } from "lucide-react";
 
-const coverLetters = [
+const letters = [
   {
     title: "DevOps Engineer",
     description: "Cover letter tailored for DevOps and infrastructure roles",
@@ -23,6 +23,12 @@ const coverLetters = [
     description: "Cover letter designed for IT support and technical roles",
     file: "/cover-letters/Cover_Letter_for_IT_Support_Technician.pdf",
     color: "hsl(160 60% 40%)"
+  },
+  {
+    title: "Learnership Completion Letter",
+    description: "Learnership completion certificate from Initium Venture Solution",
+    file: "/letters/Learnership_Completion_Letter.pdf",
+    color: "hsl(220 60% 45%)"
   }
 ];
 
@@ -30,7 +36,7 @@ const CoverLetter = () => {
   const [visibleLetters, setVisibleLetters] = useState<number[]>([]);
   
   useEffect(() => {
-    coverLetters.forEach((_, index) => {
+    letters.forEach((_, index) => {
       setTimeout(() => {
         setVisibleLetters(prev => [...prev, index]);
       }, index * 600);
@@ -47,14 +53,14 @@ const CoverLetter = () => {
               Back to Home
             </Button>
           </Link>
-          <h1 className="text-5xl font-bold mb-4">Cover Letters</h1>
+          <h1 className="text-5xl font-bold mb-4">Letters</h1>
           <p className="text-xl text-muted-foreground">
-            Professional cover letters tailored for different roles and opportunities
+            Professional letters and documents for various roles and opportunities
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {coverLetters.map((letter, index) => (
+          {letters.map((letter, index) => (
             <Card
               key={index}
               className={`certificate-card overflow-hidden cursor-pointer transition-all duration-500 ${
