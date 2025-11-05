@@ -29,6 +29,12 @@ const letters = [
     description: "Learnership completion certificate from Initium Venture Solution",
     file: "/letters/Learnership_Completion_Letter.pdf",
     color: "hsl(220 60% 45%)"
+  },
+  {
+    title: "Home Affairs Internship Completion",
+    description: "Internship completion letter from Home Affairs funded by Learning 4 Life",
+    file: "/letters/Home_Affairs_Internship_Completion_Letter.pdf",
+    color: "hsl(340 60% 45%)"
   }
 ];
 
