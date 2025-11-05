@@ -25,7 +25,7 @@ const Navigation = () => {
     { path: "/videos-and-pictures", label: "Videos & Pictures" },
     { path: "/resume", label: "Resume" },
     { path: "/documentation", label: "Documentation" },
-    { path: "/cover-letter", label: "Cover Letter" }
+    { path: "/cover-letter", label: "Letters" }
   ];
 
   return (
