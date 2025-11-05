@@ -14,6 +14,7 @@ import cert6 from "@/assets/certificates/intro-generative-ai.jpg";
 import cert7 from "@/assets/certificates/intro-responsible-ai.jpg";
 import cert8 from "@/assets/certificates/supervised-machine-learning.jpg";
 import cert9 from "@/assets/certificates/trustworthy-ai.jpg";
+import cert10 from "@/assets/certificates/system-development-nqf5.jpg";
 
 const certificates = [
   {
@@ -87,6 +88,14 @@ const certificates = [
     image: cert9,
     pdf: "/certificates/Trustworthy_AI_Managing_Bias_Ethics_and_Accountability.pdf",
     color: "hsl(0 60% 45%)"
+  },
+  {
+    title: "National Certificate: Systems Development",
+    issuer: "MICT SETA - NQF Level 5",
+    date: "Mar 28, 2024",
+    image: cert10,
+    pdf: "/certificates/System_Development_NQF5.pdf",
+    color: "hsl(180 60% 40%)"
   }
 ];
 
