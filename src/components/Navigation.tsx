@@ -40,8 +40,8 @@ const Navigation = () => {
           {/* Logo and Theme Toggle */}
           <div className="flex items-center gap-4">
             <Link
-              to="/"
-              className="text-2xl font-bold text-primary"
+              to="/login"
+              className="text-2xl font-bold text-primary hover:opacity-80 transition-opacity"
             >
               TK
             </Link>
