@@ -9,7 +9,7 @@ interface AuthContextType {
   session: Session | null;
   isAdmin: boolean;
   loading: boolean;
-  signInWithGoogle: () => Promise<void>;
+  signInWithEmailPassword: (email: string, password: string) => Promise<{ error: any }>;
   signOut: () => Promise<void>;
 }
 
@@ -67,19 +67,19 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
-  const signInWithGoogle = async () => {
-    const redirectUrl = `${window.location.origin}/admin`;
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: redirectUrl,
-      },
+  const signInWithEmailPassword = async (email: string, password: string) => {
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
     });
 
     if (error) {
-      toast.error('Failed to sign in with Google');
-      console.error('Sign in error:', error);
+      toast.error('Invalid credentials');
+      return { error };
     }
+    
+    toast.success('Signed in successfully');
+    return { error: null };
   };
 
   const signOut = async () => {
@@ -93,7 +93,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, session, isAdmin, loading, signInWithGoogle, signOut }}>
+    <AuthContext.Provider value={{ user, session, isAdmin, loading, signInWithEmailPassword, signOut }}>
       {children}
     </AuthContext.Provider>
   );
