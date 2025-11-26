@@ -1,18 +1,15 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useState } from "react";
-import { RadialBarChart, RadialBar, Legend, ResponsiveContainer } from "recharts";
 import Footer from "@/components/Footer";
+import Skills3DChart from "@/components/Skills3DChart";
 
 const Skills = () => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  const chartData = [
-    { name: "Sound Editing", value: 75, fill: "hsl(25 60% 35%)" },
-    { name: "Photoshop", value: 72, fill: "hsl(30 65% 45%)" },
-    { name: "Video Editing", value: 73, fill: "hsl(35 70% 50%)" },
-    { name: "Programming", value: 79, fill: "hsl(20 55% 40%)" },
-    { name: "Web Design", value: 85, fill: "hsl(25 60% 30%)" },
+  const skillsData = [
+    { name: "Sound Editing", value: 75, color: "#1e5a8e" },
+    { name: "Photoshop", value: 90, color: "#f4c430" },
+    { name: "Video Editing", value: 60, color: "#4caf50" },
+    { name: "Programming", value: 88, color: "#e91e63" },
+    { name: "Web Design", value: 50, color: "#ff6f3c" },
   ];
 
   return (
@@ -27,44 +24,29 @@ const Skills = () => {
           </p>
         </div>
 
-        {/* Sunburst Chart */}
-        <div className="max-w-4xl mx-auto mb-16">
+        {/* 3D Chart */}
+        <div className="max-w-6xl mx-auto mb-16">
           <Card className="p-8 bg-gradient-card border-2 border-foreground/20">
-            <h3 className="text-2xl font-semibold mb-8 text-center text-foreground">Skill Proficiency</h3>
-            <div 
-              className="w-full h-[500px] transition-transform duration-700 ease-in-out"
-              style={{ transform: isHovered ? 'rotate(360deg)' : 'rotate(0deg)' }}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-            >
-              <ResponsiveContainer width="100%" height="100%">
-                <RadialBarChart
-                  cx="50%"
-                  cy="50%"
-                  innerRadius="20%"
-                  outerRadius="90%"
-                  data={chartData}
-                  startAngle={90}
-                  endAngle={450}
-                >
-                  <RadialBar
-                    background
-                    dataKey="value"
-                    cornerRadius={10}
+            <h3 className="text-3xl font-bold mb-4 text-center text-foreground tracking-wider">
+              STUNNING 3D CHART
+            </h3>
+            <p className="text-center text-muted-foreground mb-8">
+              Drag to rotate • Auto-rotates when idle
+            </p>
+            <Skills3DChart skills={skillsData} />
+            
+            {/* Skill labels */}
+            <div className="flex justify-center gap-8 mt-8 flex-wrap">
+              {skillsData.map((skill, index) => (
+                <div key={index} className="text-center">
+                  <div 
+                    className="w-4 h-4 rounded-full mx-auto mb-2" 
+                    style={{ backgroundColor: skill.color }}
                   />
-                  <Legend
-                    iconSize={16}
-                    layout="vertical"
-                    verticalAlign="middle"
-                    align="right"
-                    formatter={(value, entry: any) => (
-                      <span className="text-foreground font-medium">
-                        {value} ({entry.payload.value}%)
-                      </span>
-                    )}
-                  />
-                </RadialBarChart>
-              </ResponsiveContainer>
+                  <p className="font-semibold text-foreground">{skill.name}</p>
+                  <p className="text-2xl font-bold text-foreground">{skill.value}</p>
+                </div>
+              ))}
             </div>
           </Card>
         </div>
