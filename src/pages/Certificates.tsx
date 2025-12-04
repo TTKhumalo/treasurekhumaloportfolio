@@ -15,6 +15,8 @@ import cert7 from "@/assets/certificates/intro-responsible-ai.jpg";
 import cert8 from "@/assets/certificates/supervised-machine-learning.jpg";
 import cert9 from "@/assets/certificates/trustworthy-ai.jpg";
 import cert10 from "@/assets/certificates/system-development-nqf5.jpg";
+import badge1 from "@/assets/certificates/ibm-ai-essentials-v2-badge.jpg";
+import badge2 from "@/assets/certificates/ibm-software-engineering-essentials-badge.jpg";
 
 interface Certificate {
   title: string;
@@ -137,7 +139,24 @@ const certificateCategories: CertificateCategory[] = [
   {
     name: "Badges",
     color: "hsl(320 60% 50%)",
-    certificates: []
+    certificates: [
+      {
+        title: "Artificial Intelligence Essentials V2",
+        issuer: "IBM via Coursera",
+        date: "Sep 2, 2025",
+        image: badge1,
+        pdf: "/certificates/IBM_AI_Essentials_V2_Badge.pdf",
+        color: "hsl(210 80% 50%)"
+      },
+      {
+        title: "Software Engineering Essentials",
+        issuer: "IBM via Coursera",
+        date: "Dec 3, 2025",
+        image: badge2,
+        pdf: "/certificates/IBM_Software_Engineering_Essentials_Badge.pdf",
+        color: "hsl(260 60% 50%)"
+      }
+    ]
   }
 ];
 
