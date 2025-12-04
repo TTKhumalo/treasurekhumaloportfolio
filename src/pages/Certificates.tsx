@@ -27,6 +27,13 @@ import pd7 from "@/assets/certificates/personal-branding.jpg";
 import pd8 from "@/assets/certificates/leading-with-impact.jpg";
 import pd9 from "@/assets/certificates/managing-conflicts.jpg";
 import pd10 from "@/assets/certificates/negotiation-skills.jpg";
+import pd11 from "@/assets/certificates/positive-psychology.jpg";
+import pd12 from "@/assets/certificates/job-interviews.jpg";
+import pd13 from "@/assets/certificates/psychology-self.jpg";
+import pd14 from "@/assets/certificates/creative-critical-thinking.jpg";
+import pd15 from "@/assets/certificates/verbal-communication.jpg";
+import pd16 from "@/assets/certificates/time-management.jpg";
+import pd17 from "@/assets/certificates/professional-emails.jpg";
 
 interface Certificate {
   title: string;
@@ -219,6 +226,62 @@ const certificateCategories: CertificateCategory[] = [
         image: pd10,
         pdf: "/certificates/Negotiation_Skills.pdf",
         color: "hsl(260 60% 50%)"
+      },
+      {
+        title: "Positive Psychology: Resilience Skills",
+        issuer: "University of Pennsylvania",
+        date: "Oct 7, 2025",
+        image: pd11,
+        pdf: "/certificates/Positive_Psychology_Resilience_Skills.pdf",
+        color: "hsl(180 60% 40%)"
+      },
+      {
+        title: "Preparation for Job Interviews",
+        issuer: "Coursera Project Network",
+        date: "Sep 30, 2025",
+        image: pd12,
+        pdf: "/certificates/Preparation_for_Job_Interviews.pdf",
+        color: "hsl(320 60% 50%)"
+      },
+      {
+        title: "Psychology of the Self",
+        issuer: "American Psychological Association",
+        date: "2025",
+        image: pd13,
+        pdf: "/certificates/Psychology_of_the_Self.pdf",
+        color: "hsl(200 60% 45%)"
+      },
+      {
+        title: "Solving Problems with Creative and Critical Thinking",
+        issuer: "IBM",
+        date: "Oct 12, 2025",
+        image: pd14,
+        pdf: "/certificates/Solving_Problems_Creative_Critical_Thinking.pdf",
+        color: "hsl(210 80% 50%)"
+      },
+      {
+        title: "Verbal Communications and Presentation Skills",
+        issuer: "Starweaver",
+        date: "Sep 3, 2025",
+        image: pd15,
+        pdf: "/certificates/Verbal_Communication_Presentation_Skills.pdf",
+        color: "hsl(25 60% 45%)"
+      },
+      {
+        title: "Work Smarter, Not Harder: Time Management",
+        issuer: "University of California, Irvine",
+        date: "Sep 19, 2025",
+        image: pd16,
+        pdf: "/certificates/Work_Smarter_Time_Management.pdf",
+        color: "hsl(40 70% 50%)"
+      },
+      {
+        title: "Write Professional Emails in English",
+        issuer: "Georgia Institute of Technology",
+        date: "Aug 26, 2025",
+        image: pd17,
+        pdf: "/certificates/Write_Professional_Emails.pdf",
+        color: "hsl(160 60% 40%)"
       }
     ]
   },
