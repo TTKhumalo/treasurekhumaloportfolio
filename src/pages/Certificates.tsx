@@ -17,6 +17,16 @@ import cert9 from "@/assets/certificates/trustworthy-ai.jpg";
 import cert10 from "@/assets/certificates/system-development-nqf5.jpg";
 import badge1 from "@/assets/certificates/ibm-ai-essentials-v2-badge.jpg";
 import badge2 from "@/assets/certificates/ibm-software-engineering-essentials-badge.jpg";
+import pd1 from "@/assets/certificates/active-listening.jpg";
+import pd2 from "@/assets/certificates/developing-interpersonal-skills.jpg";
+import pd3 from "@/assets/certificates/emotional-intelligence.jpg";
+import pd4 from "@/assets/certificates/financial-planning.jpg";
+import pd5 from "@/assets/certificates/professional-voice.jpg";
+import pd6 from "@/assets/certificates/grit-growth-mindset.jpg";
+import pd7 from "@/assets/certificates/personal-branding.jpg";
+import pd8 from "@/assets/certificates/leading-with-impact.jpg";
+import pd9 from "@/assets/certificates/managing-conflicts.jpg";
+import pd10 from "@/assets/certificates/negotiation-skills.jpg";
 
 interface Certificate {
   title: string;
@@ -129,7 +139,88 @@ const certificateCategories: CertificateCategory[] = [
   {
     name: "Professional Development Certificates",
     color: "hsl(45 80% 50%)",
-    certificates: []
+    certificates: [
+      {
+        title: "Active Listening: Enhancing Communication Skills",
+        issuer: "Coursera Instructor Network",
+        date: "Sep 9, 2025",
+        image: pd1,
+        pdf: "/certificates/Active_Listening_Enhancing_Communication_Skills.pdf",
+        color: "hsl(200 60% 45%)"
+      },
+      {
+        title: "Developing Interpersonal Skills",
+        issuer: "IBM",
+        date: "Sep 15, 2025",
+        image: pd2,
+        pdf: "/certificates/Developing_Interpersonal_Skills.pdf",
+        color: "hsl(210 80% 50%)"
+      },
+      {
+        title: "Emotional Intelligence",
+        issuer: "Arizona State University",
+        date: "Sep 23, 2025",
+        image: pd3,
+        pdf: "/certificates/Emotional_Intelligence.pdf",
+        color: "hsl(340 60% 45%)"
+      },
+      {
+        title: "Financial Planning for Young Adults",
+        issuer: "University of Illinois Urbana-Champaign",
+        date: "2025",
+        image: pd4,
+        pdf: "/certificates/Financial_Planning_Young_Adults.pdf",
+        color: "hsl(120 60% 40%)"
+      },
+      {
+        title: "Finding Your Professional Voice: Confidence & Impact",
+        issuer: "University of London",
+        date: "Sep 21, 2025",
+        image: pd5,
+        pdf: "/certificates/Finding_Your_Professional_Voice.pdf",
+        color: "hsl(280 60% 45%)"
+      },
+      {
+        title: "Grit and Growth Mindset",
+        issuer: "Arizona State University",
+        date: "Oct 7, 2025",
+        image: pd6,
+        pdf: "/certificates/Grit_and_Growth_Mindset.pdf",
+        color: "hsl(25 60% 45%)"
+      },
+      {
+        title: "Introduction to Personal Branding",
+        issuer: "University of Virginia",
+        date: "Sep 21, 2025",
+        image: pd7,
+        pdf: "/certificates/Introduction_to_Personal_Branding.pdf",
+        color: "hsl(160 60% 40%)"
+      },
+      {
+        title: "Leading with Impact: Team Dynamics, Strategy and Ethics",
+        issuer: "Coursera Instructor Network",
+        date: "Sep 21, 2025",
+        image: pd8,
+        pdf: "/certificates/Leading_with_Impact.pdf",
+        color: "hsl(0 60% 45%)"
+      },
+      {
+        title: "Managing Conflicts with Cultural and Emotional Intelligence",
+        issuer: "University of Maryland",
+        date: "Oct 6, 2025",
+        image: pd9,
+        pdf: "/certificates/Managing_Conflicts.pdf",
+        color: "hsl(45 70% 50%)"
+      },
+      {
+        title: "Negotiation Skills: Negotiate and Resolve Conflict",
+        issuer: "Macquarie University",
+        date: "Oct 12, 2025",
+        image: pd10,
+        pdf: "/certificates/Negotiation_Skills.pdf",
+        color: "hsl(260 60% 50%)"
+      }
+    ]
   },
   {
     name: "IBM Full Stack Software Developer Professional Certificates",
