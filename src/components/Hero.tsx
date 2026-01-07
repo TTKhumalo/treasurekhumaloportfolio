@@ -1,9 +1,28 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
-import profilePhoto from "@/assets/profile-photo.jpg";
+import profilePhoto1 from "@/assets/profile-photo.jpg";
+import profilePhoto2 from "@/assets/profile-photo-2.jpg";
+
+const profilePhotos = [profilePhoto1, profilePhoto2];
 
 const Hero = () => {
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentPhotoIndex((prev) => (prev + 1) % profilePhotos.length);
+        setIsTransitioning(false);
+      }, 500);
+    }, 30000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Vintage paper texture background */}
@@ -29,9 +48,9 @@ const Hero = () => {
             <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-4 border-r-4 border-accent" />
             
             <img
-              src={profilePhoto}
+              src={profilePhotos[currentPhotoIndex]}
               alt="Treasure Khumalo"
-              className="relative w-[260px] h-[260px] lg:w-[350px] lg:h-[350px] object-cover sepia-[0.3] contrast-[1.1] brightness-[0.95]"
+              className={`relative w-[260px] h-[260px] lg:w-[350px] lg:h-[350px] object-cover transition-opacity duration-500 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
               style={{ filter: 'sepia(0.3) contrast(1.1) brightness(0.95)' }}
             />
           </div>
