@@ -75,10 +75,6 @@ const Hero = () => {
             <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-4 border-l-4 border-accent transition-all duration-300 group-hover:scale-110" />
             <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-4 border-r-4 border-accent transition-all duration-300 group-hover:scale-110" />
             
-            {/* Hover overlay */}
-            <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
-              <span className="text-primary-foreground font-semibold tracking-wider uppercase text-sm bg-primary px-4 py-2">View Gallery</span>
-            </div>
             
             <img
               src={profilePhotos[currentPhotoIndex]}
