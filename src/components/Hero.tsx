@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, MessageCircle } from "lucide-react";
+import { Github, Linkedin, Mail, MessageCircle, X } from "lucide-react";
 import { Link } from "react-router-dom";
+import {
+  Dialog,
+  DialogContent,
+  DialogClose,
+} from "@/components/ui/dialog";
 import profilePhoto1 from "@/assets/profile-photo.jpg";
 import profilePhoto2 from "@/assets/profile-photo-2.jpg";
 
@@ -10,6 +15,7 @@ const profilePhotos = [profilePhoto1, profilePhoto2];
 const Hero = () => {
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -22,6 +28,25 @@ const Hero = () => {
 
     return () => clearInterval(interval);
   }, []);
+
+  // Generate random sizes for gallery mosaic based on number of photos
+  const getGalleryLayout = () => {
+    const layouts = profilePhotos.map((_, index) => {
+      const sizes = ['small', 'medium', 'large'];
+      const randomSize = sizes[index % sizes.length];
+      return {
+        size: randomSize,
+        className: randomSize === 'large' 
+          ? 'col-span-2 row-span-2' 
+          : randomSize === 'medium' 
+            ? 'col-span-1 row-span-2' 
+            : 'col-span-1 row-span-1'
+      };
+    });
+    return layouts;
+  };
+
+  const galleryLayout = getGalleryLayout();
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -36,21 +61,29 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-          {/* Vintage Profile Frame */}
-          <div className="relative group">
+          {/* Vintage Profile Frame - Clickable */}
+          <div 
+            className="relative group cursor-pointer"
+            onClick={() => setIsGalleryOpen(true)}
+          >
             {/* Ornate frame */}
-            <div className="absolute -inset-4 border-8 border-primary rounded-sm" style={{ boxShadow: 'inset 0 0 0 4px hsl(var(--card)), inset 0 0 0 12px hsl(var(--primary)), 0 8px 24px hsl(30 20% 25% / 0.2)' }} />
+            <div className="absolute -inset-4 border-8 border-primary rounded-sm transition-all duration-300 group-hover:border-accent" style={{ boxShadow: 'inset 0 0 0 4px hsl(var(--card)), inset 0 0 0 12px hsl(var(--primary)), 0 8px 24px hsl(30 20% 25% / 0.2)' }} />
             
             {/* Corner decorations */}
-            <div className="absolute -top-2 -left-2 w-6 h-6 border-t-4 border-l-4 border-accent" />
-            <div className="absolute -top-2 -right-2 w-6 h-6 border-t-4 border-r-4 border-accent" />
-            <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-4 border-l-4 border-accent" />
-            <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-4 border-r-4 border-accent" />
+            <div className="absolute -top-2 -left-2 w-6 h-6 border-t-4 border-l-4 border-accent transition-all duration-300 group-hover:scale-110" />
+            <div className="absolute -top-2 -right-2 w-6 h-6 border-t-4 border-r-4 border-accent transition-all duration-300 group-hover:scale-110" />
+            <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-4 border-l-4 border-accent transition-all duration-300 group-hover:scale-110" />
+            <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-4 border-r-4 border-accent transition-all duration-300 group-hover:scale-110" />
+            
+            {/* Hover overlay */}
+            <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
+              <span className="text-primary-foreground font-semibold tracking-wider uppercase text-sm bg-primary px-4 py-2">View Gallery</span>
+            </div>
             
             <img
               src={profilePhotos[currentPhotoIndex]}
               alt="Treasure Khumalo"
-              className={`relative w-[260px] h-[260px] lg:w-[350px] lg:h-[350px] object-cover transition-opacity duration-500 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
+              className={`relative w-[260px] h-[260px] lg:w-[350px] lg:h-[350px] object-cover transition-all duration-500 group-hover:scale-[1.02] ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
               style={{ filter: 'sepia(0.3) contrast(1.1) brightness(0.95)' }}
             />
           </div>
@@ -128,6 +161,39 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      {/* Gallery Dialog */}
+      <Dialog open={isGalleryOpen} onOpenChange={setIsGalleryOpen}>
+        <DialogContent className="max-w-4xl w-[95vw] max-h-[90vh] p-0 border-8 border-primary bg-card overflow-hidden">
+          {/* Ornate frame for gallery */}
+          <div className="absolute -inset-1 pointer-events-none" style={{ boxShadow: 'inset 0 0 0 4px hsl(var(--accent))' }} />
+          
+          <div className="p-6">
+            <h2 className="text-2xl font-bold text-foreground mb-6 text-center tracking-wider uppercase border-b-2 border-primary pb-4">
+              Photo Gallery
+            </h2>
+            
+            {/* Mosaic Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[150px] md:auto-rows-[200px]">
+              {profilePhotos.map((photo, index) => (
+                <div 
+                  key={index}
+                  className={`relative overflow-hidden border-4 border-primary group ${galleryLayout[index]?.className}`}
+                >
+                  <img
+                    src={photo}
+                    alt={`Treasure Khumalo - Photo ${index + 1}`}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    style={{ filter: 'sepia(0.2) contrast(1.05) brightness(0.98)' }}
+                  />
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
