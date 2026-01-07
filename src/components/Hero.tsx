@@ -2,11 +2,6 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, MessageCircle, X } from "lucide-react";
 import { Link } from "react-router-dom";
-import {
-  Dialog,
-  DialogContent,
-  DialogClose,
-} from "@/components/ui/dialog";
 import profilePhoto1 from "@/assets/profile-photo.jpg";
 import profilePhoto2 from "@/assets/profile-photo-2.jpg";
 
@@ -18,6 +13,9 @@ const Hero = () => {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
 
   useEffect(() => {
+    // Pause slideshow when gallery is open
+    if (isGalleryOpen) return;
+
     const interval = setInterval(() => {
       setIsTransitioning(true);
       setTimeout(() => {
@@ -27,26 +25,7 @@ const Hero = () => {
     }, 30000);
 
     return () => clearInterval(interval);
-  }, []);
-
-  // Generate random sizes for gallery mosaic based on number of photos
-  const getGalleryLayout = () => {
-    const layouts = profilePhotos.map((_, index) => {
-      const sizes = ['small', 'medium', 'large'];
-      const randomSize = sizes[index % sizes.length];
-      return {
-        size: randomSize,
-        className: randomSize === 'large' 
-          ? 'col-span-2 row-span-2' 
-          : randomSize === 'medium' 
-            ? 'col-span-1 row-span-2' 
-            : 'col-span-1 row-span-1'
-      };
-    });
-    return layouts;
-  };
-
-  const galleryLayout = getGalleryLayout();
+  }, [isGalleryOpen]);
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -64,7 +43,7 @@ const Hero = () => {
           {/* Vintage Profile Frame - Clickable */}
           <div 
             className="relative group cursor-pointer"
-            onClick={() => setIsGalleryOpen(true)}
+            onClick={() => setIsGalleryOpen(!isGalleryOpen)}
           >
             {/* Ornate frame */}
             <div className="absolute -inset-4 border-8 border-primary rounded-sm transition-all duration-300 group-hover:border-accent" style={{ boxShadow: 'inset 0 0 0 4px hsl(var(--card)), inset 0 0 0 12px hsl(var(--primary)), 0 8px 24px hsl(30 20% 25% / 0.2)' }} />
@@ -75,13 +54,32 @@ const Hero = () => {
             <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-4 border-l-4 border-accent transition-all duration-300 group-hover:scale-110" />
             <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-4 border-r-4 border-accent transition-all duration-300 group-hover:scale-110" />
             
-            
-            <img
-              src={profilePhotos[currentPhotoIndex]}
-              alt="Treasure Khumalo"
-              className={`relative w-[260px] h-[260px] lg:w-[350px] lg:h-[350px] object-cover transition-all duration-500 group-hover:scale-[1.02] ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
-              style={{ filter: 'sepia(0.3) contrast(1.1) brightness(0.95)' }}
-            />
+            {/* Single Photo View */}
+            <div className={`relative w-[260px] h-[260px] lg:w-[350px] lg:h-[350px] overflow-hidden transition-opacity duration-300 ${isGalleryOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+              <img
+                src={profilePhotos[currentPhotoIndex]}
+                alt="Treasure Khumalo"
+                className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-[1.02] ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
+                style={{ filter: 'sepia(0.3) contrast(1.1) brightness(0.95)' }}
+              />
+            </div>
+
+            {/* Gallery Mosaic View - Same Frame */}
+            <div className={`absolute inset-0 w-[260px] h-[260px] lg:w-[350px] lg:h-[350px] grid grid-cols-2 gap-1 transition-opacity duration-300 ${isGalleryOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+              {profilePhotos.map((photo, index) => (
+                <div 
+                  key={index}
+                  className="relative overflow-hidden"
+                >
+                  <img
+                    src={photo}
+                    alt={`Treasure Khumalo - Photo ${index + 1}`}
+                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                    style={{ filter: 'sepia(0.2) contrast(1.05) brightness(0.98)' }}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Content */}
@@ -157,39 +155,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-
-      {/* Gallery Dialog */}
-      <Dialog open={isGalleryOpen} onOpenChange={setIsGalleryOpen}>
-        <DialogContent className="max-w-4xl w-[95vw] max-h-[90vh] p-0 border-8 border-primary bg-card overflow-hidden">
-          {/* Ornate frame for gallery */}
-          <div className="absolute -inset-1 pointer-events-none" style={{ boxShadow: 'inset 0 0 0 4px hsl(var(--accent))' }} />
-          
-          <div className="p-6">
-            <h2 className="text-2xl font-bold text-foreground mb-6 text-center tracking-wider uppercase border-b-2 border-primary pb-4">
-              Photo Gallery
-            </h2>
-            
-            {/* Mosaic Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[150px] md:auto-rows-[200px]">
-              {profilePhotos.map((photo, index) => (
-                <div 
-                  key={index}
-                  className={`relative overflow-hidden border-4 border-primary group ${galleryLayout[index]?.className}`}
-                >
-                  <img
-                    src={photo}
-                    alt={`Treasure Khumalo - Photo ${index + 1}`}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    style={{ filter: 'sepia(0.2) contrast(1.05) brightness(0.98)' }}
-                  />
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
     </section>
   );
 };
