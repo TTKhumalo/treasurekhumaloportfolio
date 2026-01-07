@@ -34,6 +34,11 @@ import pd14 from "@/assets/certificates/creative-critical-thinking.jpg";
 import pd15 from "@/assets/certificates/verbal-communication.jpg";
 import pd16 from "@/assets/certificates/time-management.jpg";
 import pd17 from "@/assets/certificates/professional-emails.jpg";
+import ibm1 from "@/assets/certificates/developing-frontend-react.jpg";
+import ibm2 from "@/assets/certificates/intro-cloud-computing.jpg";
+import ibm3 from "@/assets/certificates/intro-html-css-js.jpg";
+import ibm4 from "@/assets/certificates/intro-software-engineering.jpg";
+import ibm5 from "@/assets/certificates/python-data-science-ai.jpg";
 
 interface Certificate {
   title: string;
@@ -288,7 +293,48 @@ const certificateCategories: CertificateCategory[] = [
   {
     name: "IBM Full Stack Software Developer Professional Certificates",
     color: "hsl(210 80% 50%)",
-    certificates: []
+    certificates: [
+      {
+        title: "Developing Front-End Apps with React",
+        issuer: "IBM via Coursera",
+        date: "Nov 27, 2025",
+        image: ibm1,
+        pdf: "/certificates/Developing_Front-End_Apps_with_React.pdf",
+        color: "hsl(200 70% 50%)"
+      },
+      {
+        title: "Introduction to Cloud Computing",
+        issuer: "IBM via Coursera",
+        date: "Nov 26, 2025",
+        image: ibm2,
+        pdf: "/certificates/Introduction_to_Cloud_Computing.pdf",
+        color: "hsl(210 80% 50%)"
+      },
+      {
+        title: "Introduction to HTML, CSS, & JavaScript",
+        issuer: "IBM via Coursera",
+        date: "Dec 11, 2025",
+        image: ibm3,
+        pdf: "/certificates/Introduction_to_HTML_CSS_JavaScript.pdf",
+        color: "hsl(25 70% 50%)"
+      },
+      {
+        title: "Introduction to Software Engineering",
+        issuer: "IBM via Coursera",
+        date: "Dec 2, 2025",
+        image: ibm4,
+        pdf: "/certificates/Introduction_to_Software_Engineering.pdf",
+        color: "hsl(260 60% 50%)"
+      },
+      {
+        title: "Python for Data Science, AI & Development",
+        issuer: "IBM via Coursera",
+        date: "Nov 7, 2025",
+        image: ibm5,
+        pdf: "/certificates/Python_for_Data_Science_AI_Development.pdf",
+        color: "hsl(45 80% 50%)"
+      }
+    ]
   },
   {
     name: "Badges",
