@@ -357,6 +357,36 @@ const certificateCategories: CertificateCategory[] = [
         color: "hsl(260 60% 50%)"
       }
     ]
+  },
+  {
+    name: "yes4youth Certificates",
+    color: "hsl(140 60% 45%)",
+    certificates: [
+      {
+        title: "Entrepreneurship Certificate",
+        issuer: "Yes4Youth Program",
+        date: "2025",
+        image: "/certificates/Yes4Youth_Entrepreneurship.pdf",
+        pdf: "/certificates/Yes4Youth_Entrepreneurship.pdf",
+        color: "hsl(140 60% 45%)"
+      },
+      {
+        title: "Digital Skills Certificate",
+        issuer: "Yes4Youth Program",
+        date: "2025",
+        image: "/certificates/Yes4Youth_Digital.pdf",
+        pdf: "/certificates/Yes4Youth_Digital.pdf",
+        color: "hsl(200 60% 50%)"
+      },
+      {
+        title: "Work Readiness Certificate",
+        issuer: "Yes4Youth Program",
+        date: "2025",
+        image: "/certificates/Yes4Youth_Work_Readiness.pdf",
+        pdf: "/certificates/Yes4Youth_Work_Readiness.pdf",
+        color: "hsl(45 70% 50%)"
+      }
+    ]
   }
 ];
 
