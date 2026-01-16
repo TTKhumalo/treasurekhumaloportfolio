@@ -391,9 +391,7 @@ const certificateCategories: CertificateCategory[] = [
 ];
 
 const Certificates = () => {
-  const [expandedCategories, setExpandedCategories] = useState<string[]>(
-    certificateCategories.filter(cat => cat.certificates.length > 0).map(cat => cat.name)
-  );
+  const [expandedCategories, setExpandedCategories] = useState<string[]>([]);
   const [visibleCerts, setVisibleCerts] = useState<string[]>([]);
 
   const toggleCategory = (categoryName: string) => {
