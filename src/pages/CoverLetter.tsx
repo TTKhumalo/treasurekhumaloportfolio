@@ -7,22 +7,10 @@ import { Download, ArrowLeft, FileText } from "lucide-react";
 
 const letters = [
   {
-    title: "DevOps Engineer",
-    description: "Cover letter tailored for DevOps and infrastructure roles",
-    file: "/cover-letters/Cover_Letter_for_DevOps_Engineer.pdf",
-    color: "hsl(200 60% 45%)"
-  },
-  {
     title: "Full Stack Development",
     description: "Cover letter focused on full stack development positions",
     file: "/cover-letters/Cover_Letter_for_Full_Stack_Development.pdf",
     color: "hsl(280 60% 45%)"
-  },
-  {
-    title: "IT Support Technician",
-    description: "Cover letter designed for IT support and technical roles",
-    file: "/cover-letters/Cover_Letter_for_IT_Support_Technician.pdf",
-    color: "hsl(160 60% 40%)"
   },
   {
     title: "Learnership Completion Letter",
