@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Folder, ChevronDown, ChevronRight, ArrowLeft } from "lucide-react";
+import { ExternalLink, Folder, ChevronDown, ChevronRight, ArrowLeft, Download } from "lucide-react";
+import spriteAdImage from "@/assets/videos/after-effect-sprite-ad.jpg";
 import graduateJobImage from "@/assets/videos/graduate-job-system.jpg";
 import aiMaintenanceImage from "@/assets/videos/ai-predictive-maintenance.jpg";
 import sentimentAnalysisImage from "@/assets/videos/sentiment-analysis.jpg";
@@ -59,7 +60,15 @@ const mediaCategories: MediaCategory[] = [
   {
     name: "Adobe After Effects",
     color: "hsl(270 80% 55%)",
-    items: []
+    items: [
+      {
+        title: "Sprite Ad - After Effects Animation",
+        url: "/videos/AfterEffectAdForSpriteVideo.avi",
+        description: "Motion graphics advertisement for Sprite created in Adobe After Effects",
+        image: spriteAdImage,
+        type: "video"
+      }
+    ]
   },
   {
     name: "Adobe Photoshop",
@@ -172,12 +181,16 @@ const VideosAndPictures = () => {
                               <Button variant="default" className="w-full" asChild>
                                 <a
                                   href={item.url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
+                                  target={item.url.startsWith("http") ? "_blank" : undefined}
+                                  rel={item.url.startsWith("http") ? "noopener noreferrer" : undefined}
+                                  download={!item.url.startsWith("http") ? true : undefined}
                                   className="flex items-center justify-center gap-2"
                                 >
-                                  <ExternalLink className="w-4 h-4" />
-                                  Watch Video
+                                  {item.url.startsWith("http") ? (
+                                    <><ExternalLink className="w-4 h-4" /> Watch Video</>
+                                  ) : (
+                                    <><Download className="w-4 h-4" /> Download Video</>
+                                  )}
                                 </a>
                               </Button>
                             </CardContent>
