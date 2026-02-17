@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Folder, ChevronDown, ChevronRight, ArrowLeft, Download } from "lucide-react";
+import { ExternalLink, Folder, ChevronDown, ChevronRight, ArrowLeft } from "lucide-react";
 import spriteAdImage from "@/assets/videos/after-effect-sprite-ad.jpg";
 import graduateJobImage from "@/assets/videos/graduate-job-system.jpg";
 import aiMaintenanceImage from "@/assets/videos/ai-predictive-maintenance.jpg";
@@ -14,6 +14,7 @@ import originalPhotoImage from "@/assets/photoshop/original-photo.jpg";
 import picResizeFontEditImage from "@/assets/photoshop/pic-resize-font-edit.jpg";
 import themeFontEditImage from "@/assets/photoshop/theme-font-edit.jpg";
 import themeEditImage from "@/assets/photoshop/theme-edit.jpg";
+import threeScreensImage from "@/assets/videos/three-screens-animation.jpg";
 
 interface MediaItem {
   title: string;
@@ -63,9 +64,16 @@ const mediaCategories: MediaCategory[] = [
     items: [
       {
         title: "Sprite Ad - After Effects Animation",
-        url: "/videos/AfterEffectAdForSpriteVideo.avi",
+        url: "/videos/AfterEffectAdForSpriteVideo.mp4",
         description: "Motion graphics advertisement for Sprite created in Adobe After Effects",
         image: spriteAdImage,
+        type: "video"
+      },
+      {
+        title: "Three Screens Animation Display",
+        url: "/videos/ThreeScreensAnimationDisplay.mp4",
+        description: "Multi-screen animation display created in Adobe After Effects",
+        image: threeScreensImage,
         type: "video"
       }
     ]
@@ -181,16 +189,11 @@ const VideosAndPictures = () => {
                               <Button variant="default" className="w-full" asChild>
                                 <a
                                   href={item.url}
-                                  target={item.url.startsWith("http") ? "_blank" : undefined}
-                                  rel={item.url.startsWith("http") ? "noopener noreferrer" : undefined}
-                                  download={!item.url.startsWith("http") ? true : undefined}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
                                   className="flex items-center justify-center gap-2"
                                 >
-                                  {item.url.startsWith("http") ? (
-                                    <><ExternalLink className="w-4 h-4" /> Watch Video</>
-                                  ) : (
-                                    <><Download className="w-4 h-4" /> Download Video</>
-                                  )}
+                                  <ExternalLink className="w-4 h-4" /> Watch Video
                                 </a>
                               </Button>
                             </CardContent>
