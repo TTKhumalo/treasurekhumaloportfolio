@@ -100,8 +100,8 @@ const Hero = () => {
             </div>
 
             <p className="text-lg text-foreground/80 leading-relaxed animate-fade-in-delayed italic border-l-4 border-accent pl-4">
-              Passionate about creating innovative AI solutions and building robust applications.
-              Specializing in web development, database management, and multimedia technologies.
+              Passionate about creating innovative AI solutions, building robust applications, and crafting compelling visual designs.
+              Specializing in web development, database management, multimedia technologies, and graphic design.
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start animate-fade-in-delayed-more">
